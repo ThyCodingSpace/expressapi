@@ -1,1 +1,1 @@
-export * as burgerController from "./burger_controller";
+export * as setMealController from "./setmeal_controller";

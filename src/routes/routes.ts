@@ -1,14 +1,12 @@
-const express = require('express')
+import express from "express"
 import productRoutes from "./products"
-
-import { Request , Response } from 'express';
 
 
 const router = express.Router();
 
+
+/* /api/v1/teamsit/products
+*/
 router.use("/teamsit", productRoutes);
 
 export const allRoutes = router;
-
-
-// /api/v1/teamsit/products/burgers/{burgerID}

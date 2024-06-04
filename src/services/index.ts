@@ -1,0 +1,1 @@
+export * as setmealservice from "./setmeal_service"
