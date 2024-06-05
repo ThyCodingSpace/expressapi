@@ -3,8 +3,9 @@ import express, { Express, Request, Response , Application, NextFunction } from 
 import dotenv from 'dotenv';
 import { allRoutes } from './routes/routes.js';
 import './database/connection.js';
+import { connect_db } from './database/connection.js';
 import cors from "cors";
-import User from './database/models/users.js';
+import User from './models/users.js';
 
 
 export const CORS_WHITELIST = [
@@ -13,7 +14,7 @@ export const CORS_WHITELIST = [
 
 //For env File 
 dotenv.config();
-// connect_db();
+connect_db();
 const server: Application = express();
 const PORT = process.env.PORT || 8002;
 // app.use(cors({ origin: CORS_WHITELIST }));
@@ -23,17 +24,16 @@ const PORT = process.env.PORT || 8002;
 //   next();
 // });
 
-
+server.use(express.json()) // for express to parse json
 server.use("/api/v1", allRoutes)
+
+
 server.get("/", (req: Request, res: Response) => res.send("Server running..."));
 
+/* exmaple post request */
 server.post("/api/user", async (req: Request, res: Response) => {
-    const data = {
-        id: 333,
-        firstName: "John",
-        lastName: "Doe",
-        age: 120
-    }
+    const data = req.body
+    console.log(data)
     
     const user = await User.create(data)
     

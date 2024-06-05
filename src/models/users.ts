@@ -6,7 +6,7 @@ import {
   } from "sequelize-typescript";
   
   @Table({
-    timestamps: true,
+    timestamps: false, // change to true if you need timestamp
     tableName: "users",
     modelName: "Users",
   })
@@ -32,6 +32,11 @@ import {
     type: DataType.INTEGER,
     })
     declare age: number;
+
+    @Column({
+    type: DataType.STRING,
+    })
+    declare email: string;
 
   }
   
