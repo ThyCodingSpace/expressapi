@@ -32,12 +32,19 @@ server.get("/", (req: Request, res: Response) => res.send("Server running..."));
 
 /* exmaple post request */
 server.post("/api/user", async (req: Request, res: Response) => {
-    const data = req.body
-    console.log(data)
+
+    try {
+        const data = req.body
+        console.log(data)
+        const user = await User.create(data)
+
+        return res.status(201).json(user)
+
+    } catch (error) { 
+        // deal with the error if any. exception handling
+        console.log(error)
+    }
     
-    const user = await User.create(data)
-    
-    return res.status(201).json(user)
 } )
 
 server.listen(PORT, () => {`Server running on port ${PORT}`});
