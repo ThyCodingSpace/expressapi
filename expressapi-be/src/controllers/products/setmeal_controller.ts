@@ -14,6 +14,6 @@ export const getSetMeal = async ( req: Request, res: Response ) => {
         return res.status(404).json({ message: 'Set meal not found' });
     }
 
-    res.status(200).json(data);
+    res.status(201).json(data);
 
 }

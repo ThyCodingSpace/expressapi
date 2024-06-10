@@ -33,11 +33,6 @@ import {
     })
     declare age: number;
 
-    @Column({
-    type: DataType.STRING,
-    })
-    declare email: string;
-
   }
   
   export default User;
